@@ -8,11 +8,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:github_search/view/search.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const Search());
+    await tester.pumpWidget(
+      const ProviderScope(
+        child: MaterialApp(
+          home: Search(),
+        ),
+      ),
+    );
 
     // Verify that our counter starts at 0.
     expect(find.text('github検索画面'), findsOneWidget);
