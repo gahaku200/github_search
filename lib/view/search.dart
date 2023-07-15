@@ -213,11 +213,11 @@ class Search extends HookConsumerWidget {
           ),
           // 検索中にローディングさせる
           isLoading
-              ? Opacity(
+              ? const Opacity(
                   opacity: 0.8,
-                  child: Container(
+                  child: ColoredBox(
                     color: Colors.grey,
-                    child: const Center(
+                    child: Center(
                       child: CircularProgressIndicator(),
                     ),
                   ),

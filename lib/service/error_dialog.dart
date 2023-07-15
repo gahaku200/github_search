@@ -7,7 +7,7 @@ class ErrorDialog {
     required String subtitle,
     required BuildContext context,
   }) async {
-    await showDialog(
+    await showDialog<String>(
       context: context,
       builder: (context) {
         return AlertDialog(
