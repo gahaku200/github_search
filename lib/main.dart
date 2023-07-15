@@ -27,7 +27,7 @@ void main() async {
                 future: ref.watch(themeState.notifier).initialState(),
                 builder: (context, AsyncSnapshot<bool> snapshot) {
                   return snapshot.hasData
-                      ? MaterialApp(home: Search())
+                      ? const MaterialApp(home: Search())
                       : const LoadingView();
                 },
               );

@@ -1,6 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// アプリ起動時のローディング画面
 class LoadingView extends StatelessWidget {
   const LoadingView({super.key});
 
