@@ -57,7 +57,10 @@ jobs:
           echo 'keyAlias=${{ secrets.KEY_ALIAS }}' >> android/key.properties
 
       - name: Set PC_API_JSON
-        run: echo ${{ secrets.PC_API_JSON }} > android/pc-api.json
+        env:
+          PC_API_JSON: ${{ secrets.PC_API_JSON }}
+        run: |
+          echo $PC_API_JSON > android/pc-api.json
 
       - name: Set KEY_JKS
         run: echo ${{ secrets.KEY_JKS }} | base64 --decode > android/app/key.jks
