@@ -51,19 +51,16 @@ jobs:
         env:
           KEYS_PROPERTIES: ${{ secrets.KEYS_PROPERTIES }}
         run: |
-          echo $KEYS_PROPERTIES >> android/key.properties
+          echo 'storeFile=../key.jks' > android/key.properties
+          echo 'storePassword=${{ secrets.STORE_PASSWORD }}' >> android/key.properties
+          echo 'keyPassword=${{ secrets.KEY_PASSWORD }}' >> android/key.properties
+          echo 'keyAlias=${{ secrets.KEY_ALIAS }}' >> android/key.properties
 
       - name: Set PC_API_JSON
-        env:
-          PC_API_JSON: ${{ secrets.PC_API_JSON }}
-        run: |
-          echo $PC_API_JSON > android/pc-api.json
+        run: echo ${{ secrets.PC_API_JSON }} > android/pc-api.json
 
       - name: Set KEY_JKS
-        env:
-          KEY_JKS: ${{ secrets.KEY_JKS }}
-        run: |
-          echo $KEY_JKS | base64 --decode > android/app/key.jks
+        run: echo ${{ secrets.KEY_JKS }} | base64 --decode > android/app/key.jks
 
       - name: Build app bundle
         id: build
