@@ -38,22 +38,23 @@ class SearchNotifier extends StateNotifier<List<GithubRepoModel>> {
           final result = jsonDecode(response.body);
           final items = result['items'] as List<dynamic>;
           final updatedList = items
-              .map((repository) => GithubRepoModel(
-                    name: repository['name'] as String? ?? '',
-                    ownerIcon:
-                        repository['owner']['avatar_url'] as String? ?? '',
-                    language: repository['language'] as String? ?? '',
-                    star: repository['stargazers_count'] as int? ?? 0,
-                    watcher: repository['watchers_count'] as int? ?? 0,
-                    fork: repository['forks_count'] as int? ?? 0,
-                    issue: repository['open_issues_count'] as int? ?? 0,
-                  ))
+              .map(
+                (repository) => GithubRepoModel(
+                  name: repository['name'] as String? ?? '',
+                  ownerIcon: repository['owner']['avatar_url'] as String? ?? '',
+                  language: repository['language'] as String? ?? '',
+                  star: repository['stargazers_count'] as int? ?? 0,
+                  watcher: repository['watchers_count'] as int? ?? 0,
+                  fork: repository['forks_count'] as int? ?? 0,
+                  issue: repository['open_issues_count'] as int? ?? 0,
+                ),
+              )
               .toList();
           state = [...state, ...updatedList];
         },
       );
       return 'success';
-    } catch (error) {
+    } on Exception catch (error) {
       return error.toString();
     }
   }
