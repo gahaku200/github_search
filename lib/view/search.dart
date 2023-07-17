@@ -1,10 +1,15 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../service/error_dialog.dart';
 import '../view_model/dark_theme_provider.dart';
 import '../view_model/search_provider.dart';
+import 'search_detail.dart';
 
 final getTheme = Provider((ref) {
   final isDark = ref.watch(themeState);
@@ -202,7 +207,23 @@ class Search extends HookConsumerWidget {
                                     Text(result[index].star.toString()),
                                   ],
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                                  showModalBottomSheet<void>(
+                                    context: context,
+                                    backgroundColor: Colors.transparent,
+                                    builder: (BuildContext context) {
+                                      return SearchDetail(
+                                        name: result[index].name,
+                                        ownerIcon: result[index].ownerIcon,
+                                        language: result[index].language,
+                                        star: result[index].star,
+                                        watcher: result[index].watcher,
+                                        fork: result[index].fork,
+                                        issue: result[index].issue,
+                                      );
+                                    },
+                                  );
+                                },
                               );
                             },
                           ),
