@@ -23,6 +23,7 @@ class Styles {
                 ? const ColorScheme.dark()
                 : const ColorScheme.light(),
           ),
+      fontFamily: 'Murecho',
     );
   }
 }

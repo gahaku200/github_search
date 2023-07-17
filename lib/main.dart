@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'view/search.dart';
 import 'const/loading.dart';
+import 'view/search.dart';
 import 'view_model/dark_theme_provider.dart';
 
 void main() async {
@@ -27,7 +27,10 @@ void main() async {
                 future: ref.watch(themeState.notifier).initialState(),
                 builder: (context, AsyncSnapshot<bool> snapshot) {
                   return snapshot.hasData
-                      ? const MaterialApp(home: Search())
+                      ? const MaterialApp(
+                          debugShowCheckedModeBanner: false,
+                          home: Search(),
+                        )
                       : const LoadingView();
                 },
               );

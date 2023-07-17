@@ -1,5 +1,7 @@
-// Package imports:
+// Dart imports:
 import 'dart:convert';
+
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 
@@ -57,6 +59,11 @@ class SearchNotifier extends StateNotifier<List<GithubRepoModel>> {
     } on Exception catch (error) {
       return error.toString();
     }
+  }
+
+  // テスト用、検索結果をstateに追加する
+  void updateForTest(List<GithubRepoModel> updatedList) {
+    state = [...state, ...updatedList];
   }
 }
 
