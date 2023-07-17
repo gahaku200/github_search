@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -42,7 +43,7 @@ class Search extends HookConsumerWidget {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         centerTitle: true,
         title: Text(
-          'github検索画面',
+          AppLocalizations.of(context)!.title,
           style: TextStyle(
             overflow: TextOverflow.ellipsis,
             color: color,
@@ -63,7 +64,7 @@ class Search extends HookConsumerWidget {
             DrawerHeader(
               child: Center(
                 child: Text(
-                  '設定',
+                  AppLocalizations.of(context)!.settings,
                   style: TextStyle(color: color, fontSize: 20),
                 ),
               ),
@@ -115,7 +116,7 @@ class Search extends HookConsumerWidget {
                             color: Colors.greenAccent,
                           ),
                         ),
-                        hintText: 'githubリポジトリ名を入力',
+                        hintText: AppLocalizations.of(context)!.textHint,
                         prefixIcon: const Icon(Icons.search),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -137,17 +138,17 @@ class Search extends HookConsumerWidget {
                 Container(
                   margin: const EdgeInsets.fromLTRB(0, 16, 0, 0),
                   child: ElevatedButton(
-                    child: const Padding(
-                      padding: EdgeInsets.all(8),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
                       child: Text(
-                        '検索',
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.searchButton,
+                        style: const TextStyle(
                           fontSize: 20,
                         ),
                       ),
                     ),
                     onPressed: () async {
-                      if (searchTextController.text.isNotEmpty) {
+                      if (searchTextController.text.trim().isNotEmpty) {
                         searchTextFocusNode.unfocus();
                         isLoadingNotifier.state = true;
                         pageNotifier.state = 1;
@@ -177,7 +178,7 @@ class Search extends HookConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8),
                           child: Text(
-                            '検索結果なし',
+                            AppLocalizations.of(context)!.noResult,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: color,

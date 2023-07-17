@@ -1,0 +1,12 @@
+{
+  "@@locale": "ja",
+  "settings": "設定",
+  "privacyPolicy": "利用規約・プライバシーポリシー",
+  "licenses": "著作権情報",
+  "title": "github検索画面",
+  "textHint": "githubリポジトリ名を入力",
+  "searchButton": "検索",
+  "noResult": "検索結果なし",
+  "resultDetail": "検索詳細",
+  "developmentLanguage": "開発言語"
+}

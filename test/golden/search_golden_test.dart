@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -23,6 +25,15 @@ void main() {
               theme: ThemeData(
                 fontFamily: 'Murecho',
               ),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('ja', ''),
+              ],
               home: const Search(),
             ),
           ),
@@ -51,6 +62,15 @@ void main() {
                   theme: ThemeData(
                     fontFamily: 'Murecho',
                   ),
+                  localizationsDelegates: const [
+                    AppLocalizations.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  supportedLocales: const [
+                    Locale('ja', ''),
+                  ],
                   home: const Search(),
                 ),
               ),

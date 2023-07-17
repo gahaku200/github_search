@@ -1,0 +1,12 @@
+{
+  "@@locale": "en",
+  "settings": "Settings",
+  "privacyPolicy": "Privacy Policy",
+  "licenses": "Licenses",
+  "title": "Github Search Screen",
+  "textHint": "Enter github repository name",
+  "searchButton": "search",
+  "noResult": "No search results",
+  "resultDetail": "Search Details",
+  "developmentLanguage": "Development Language"
+}

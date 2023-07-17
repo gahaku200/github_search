@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:run_with_network_images/run_with_network_images.dart';
@@ -17,7 +19,18 @@ void main() {
       await runWithNetworkImages(() async {
         await tester.pumpWidget(
           const ProviderScope(
-            child: MaterialApp(home: Search()),
+            child: MaterialApp(
+              localizationsDelegates: [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: [
+                Locale('ja', ''),
+              ],
+              home: Search(),
+            ),
           ),
         );
 
