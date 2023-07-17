@@ -26,6 +26,7 @@ class Search extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final color = ref.watch(getTheme);
+    final isDark = ref.watch(themeState);
     final searchTextController = useTextEditingController();
     final searchTextFocusNode = useFocusNode();
     final scrollController = ScrollController();
@@ -49,6 +50,40 @@ class Search extends HookConsumerWidget {
             fontWeight: FontWeight.bold,
             decoration: TextDecoration.none,
           ),
+        ),
+        iconTheme: IconThemeData(
+          color: color,
+        ),
+      ),
+      endDrawer: Drawer(
+        child: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 36),
+          children: <Widget>[
+            DrawerHeader(
+              child: Center(
+                child: Text(
+                  '設定',
+                  style: TextStyle(color: color, fontSize: 20),
+                ),
+              ),
+            ),
+            SwitchListTile(
+              title: Text(
+                isDark ? 'Dark mode' : 'Light mode',
+                style: TextStyle(
+                  color: color,
+                  fontSize: 22,
+                  decoration: TextDecoration.none,
+                ),
+              ),
+              secondary: Icon(
+                isDark ? Icons.dark_mode_outlined : Icons.light_mode_outlined,
+              ),
+              onChanged: ref.read(themeState.notifier).setDarkTheme,
+              value: isDark,
+            ),
+          ],
         ),
       ),
       body: Stack(

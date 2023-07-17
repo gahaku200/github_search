@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import 'const/loading.dart';
+import 'const/theme_data.dart';
 import 'view/search.dart';
 import 'view_model/dark_theme_provider.dart';
 
@@ -23,13 +24,15 @@ void main() async {
         ProviderScope(
           child: Consumer(
             builder: (BuildContext context, ref, child) {
+              final value = ref.watch(themeState);
               return FutureBuilder(
                 future: ref.watch(themeState.notifier).initialState(),
                 builder: (context, AsyncSnapshot<bool> snapshot) {
                   return snapshot.hasData
-                      ? const MaterialApp(
+                      ? MaterialApp(
                           debugShowCheckedModeBanner: false,
-                          home: Search(),
+                          theme: Styles.themeData(value, context),
+                          home: const Search(),
                         )
                       : const LoadingView();
                 },
