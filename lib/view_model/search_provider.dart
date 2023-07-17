@@ -56,7 +56,8 @@ class SearchNotifier extends StateNotifier<List<GithubRepoModel>> {
         },
       );
       return 'success';
-    } on Exception catch (error) {
+      // ignore: avoid_catches_without_on_clauses
+    } catch (error) {
       return error.toString();
     }
   }
