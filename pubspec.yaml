@@ -11,6 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.0
   flutter_hooks: ^0.18.6
   hooks_riverpod: ^2.3.6
   shared_preferences: ^2.2.0
@@ -56,4 +59,5 @@ flutter:
           weight: 800
         - asset: assets/fonts/Murecho/static/Murecho-Black.ttf
           weight: 900
+  generate: true
   uses-material-design: true

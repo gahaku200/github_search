@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
@@ -58,10 +59,10 @@ class SearchDetail extends HookConsumerWidget {
                     Navigator.pop(context);
                   },
                 ),
-                const Center(
+                Center(
                   child: Text(
-                    '検索詳細',
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.resultDetail,
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                   ),
@@ -98,7 +99,7 @@ class SearchDetail extends HookConsumerWidget {
                   ),
                 ),
                 Text(
-                  '開発言語：$language',
+                  '${AppLocalizations.of(context)!.developmentLanguage}：$language',
                   style: TextStyle(
                     color: color,
                     fontSize: 16,
