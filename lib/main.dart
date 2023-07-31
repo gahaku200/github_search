@@ -5,16 +5,26 @@ import 'package:flutter/services.dart';
 // Package imports:
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:http/http.dart' as http;
 
 // Project imports:
 import 'const/loading.dart';
 import 'const/theme_data.dart';
 import 'view/search.dart';
 import 'view_model/dark_theme_provider.dart';
+import 'view_model/search_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // DIの設定
+  GetIt.I.registerLazySingleton<http.Client>(
+    http.Client.new,
+  );
+  GetIt.I.registerLazySingleton<SearchNotifier>(
+    SearchNotifier.new,
+  );
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeLeft,
