@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 // Package imports:
+import 'package:get_it/get_it.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,13 +17,14 @@ class SearchNotifier extends StateNotifier<List<GithubRepoModel>> {
     String searchText,
     String page,
   ) async {
+    final client = GetIt.I<http.Client>();
     try {
       // 検索ボタンを押下した場合はまずstateを空にする
       if (page == '1') {
         state = [];
       }
       // GitHub APIに通信する
-      await http
+      await client
           .get(
         Uri.https(
           'api.github.com',
