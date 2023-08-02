@@ -17,21 +17,42 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
     },
     config: GoldenToolkitConfiguration(
       defaultDevices: const [
+        // 縦向き
         Device(
-          name: 'mobileS', // 最小の端末
+          name: 'mobileS vertical', // 最小の端末
           size: Size(360, 720),
           devicePixelRatio: 3,
           safeArea: EdgeInsets.only(top: 44, bottom: 34),
         ),
         Device(
-          name: 'mobileM',
+          name: 'mobileM vertical',
           size: Size(390, 844),
           devicePixelRatio: 3,
           safeArea: EdgeInsets.only(top: 44, bottom: 34),
         ),
         Device(
-          name: 'mobileL', // 最大の端末
+          name: 'mobileL vertical', // 最大の端末
           size: Size(428, 926),
+          devicePixelRatio: 3,
+          safeArea: EdgeInsets.only(top: 44, bottom: 34),
+        ),
+
+        // 横向き
+        Device(
+          name: 'mobileS horizontal', // 最小の端末
+          size: Size(720, 360),
+          devicePixelRatio: 3,
+          safeArea: EdgeInsets.only(top: 44, bottom: 34),
+        ),
+        Device(
+          name: 'mobileM horizontal',
+          size: Size(844, 390),
+          devicePixelRatio: 3,
+          safeArea: EdgeInsets.only(top: 44, bottom: 34),
+        ),
+        Device(
+          name: 'mobileL horizontal', // 最大の端末
+          size: Size(926, 428),
           devicePixelRatio: 3,
           safeArea: EdgeInsets.only(top: 44, bottom: 34),
         ),
